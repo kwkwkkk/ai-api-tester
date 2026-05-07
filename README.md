@@ -1,53 +1,55 @@
 # AI API Tester
 
-A lightweight tool for testing AI API endpoints — verify your API Key, Base URL, and Model availability across providers.
+一个轻量级的 AI API 测试工具 — 验证你的 API Key、Base URL 和模型可用性。
 
-**Live Demo:** https://ai-api-tester.pages.dev
+**在线体验：** https://ai-api-tester.pages.dev
 
-## Features
+[English](./README_EN.md)
+
+## 功能
 
 - OpenAI Chat API (`/v1/chat/completions`)
 - OpenAI Responses API (`/v1/responses`)
 - Anthropic Messages API (`/v1/messages`)
-- Model list fetching (`/v1/models`)
-- Batch model testing
-- cURL command export
-- Browser-local config profiles (localStorage)
-- Stream mode support with SSE parsing
-- Response time, status code, and extracted text display
+- 模型列表获取 (`/v1/models`)
+- 批量模型测试
+- cURL 命令导出
+- 浏览器本地配置档案（localStorage）
+- Stream 模式支持（SSE 解析）
+- 响应时间、状态码、提取文本展示
 
-## Quick Start
+## 快速开始
 
-### Option 1: Use Online (No Install)
+### 方式一：在线使用（无需安装）
 
-Visit https://ai-api-tester.pages.dev
+访问 https://ai-api-tester.pages.dev
 
-### Option 2: Desktop App (Windows)
+### 方式二：桌面应用（Windows）
 
-Download the portable `.exe` from [Releases](../../releases) — double-click to run.
+从 [Releases](../../releases) 下载 `.exe`，双击即可运行，无需安装。
 
-### Option 3: Local Server
+### 方式三：本地服务器
 
 ```bash
 npm install
 npm start
-# Open http://localhost:3210
+# 打开 http://localhost:3210
 ```
 
-### Option 4: Docker
+### 方式四：Docker
 
 ```bash
 docker build -t ai-api-tester .
 docker run -d --name ai-api-tester -p 3210:3210 ai-api-tester
 ```
 
-Or with Docker Compose:
+或使用 Docker Compose：
 
 ```bash
 docker compose up --build -d
 ```
 
-### Option 5: Deploy to Cloudflare Pages (Free)
+### 方式五：部署到 Cloudflare Pages（免费）
 
 ```bash
 npm install -g wrangler
@@ -56,32 +58,32 @@ wrangler pages project create ai-api-tester --production-branch main
 npm run deploy
 ```
 
-Redeploy after changes: `npm run deploy`
+后续更新只需 `npm run deploy`。
 
-### Option 6: Electron Dev Mode
+### 方式六：Electron 开发模式
 
 ```bash
 npm install
 npm run electron
 ```
 
-## Security
+## 安全
 
-- **No server-side storage** — API keys and prompts exist only in memory during request processing.
-- Server acts as a proxy only; nothing is logged or cached.
-- Saved configs live in your browser's localStorage, not on the server.
-- Built-in rate limiting (30 req/IP/min) for self-hosted deployments.
-- For public deployments, consider adding an auth layer.
+- **无服务端存储** — API Key 和 Prompt 仅在请求处理期间存在于内存中。
+- 服务端仅作代理，不记录或缓存任何内容。
+- 保存的配置存储在浏览器 localStorage，不在服务器上。
+- 内置速率限制（30 请求/IP/分钟），适用于自托管部署。
+- 公开部署建议添加认证层。
 
-## Project Structure
+## 项目结构
 
 ```
-public/            — Frontend (HTML/CSS/JS)
-functions/         — Cloudflare Pages Functions (serverless API)
-app-core.mjs       — Express-based API (for Node.js/Docker/Electron)
-server.mjs         — Standalone Node.js entry point
-electron-main.js   — Electron main process
-wrangler.toml      — Cloudflare Pages config
+public/            — 前端（HTML/CSS/JS）
+functions/         — Cloudflare Pages Functions（无服务器 API）
+app-core.mjs       — Express 版 API（Node.js/Docker/Electron）
+server.mjs         — 独立 Node.js 服务入口
+electron-main.js   — Electron 主进程
+wrangler.toml      — Cloudflare Pages 配置
 ```
 
 ## License
