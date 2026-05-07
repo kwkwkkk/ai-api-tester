@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI API Tester</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>AI API Tester</h1>
+        <p>测试 OpenAI Chat API、Responses API、Anthropic Messages API</p>
+      </header>
+
+      <main class="grid">
+        <section class="panel form-panel">
+          <div class="field">
+            <label for="profileSelect">配置档案</label>
+            <div class="inline-actions">
+              <select id="profileSelect"></select>
+              <button id="saveProfileBtn">保存档案</button>
+              <button id="deleteProfileBtn" class="danger">删除</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="apiType">API 格式</label>
+            <select id="apiType">
+              <option value="openai-chat">OpenAI Chat API</option>
+              <option value="openai-responses">OpenAI Responses API</option>
+              <option value="anthropic">Anthropic Messages API</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="baseUrl">Base URL</label>
+            <input id="baseUrl" placeholder="https://api.openai.com" />
+          </div>
+
+          <div class="field">
+            <label for="apiKey">API Key</label>
+            <input id="apiKey" type="password" placeholder="sk-..." />
+          </div>
+
+          <div class="field row">
+            <div>
+              <label for="model">单模型测试</label>
+              <input id="model" placeholder="gpt-4.1-mini / claude-3-5-sonnet-latest" />
+            </div>
+            <div>
+              <label for="maxTokens">Max Tokens</label>
+              <input id="maxTokens" type="number" value="256" min="1" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="batchModels">批量模型测试（每行一个）</label>
+            <textarea id="batchModels" rows="5" placeholder="gpt-4.1-mini&#10;gpt-4o-mini"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="anthropicVersion">Anthropic Version</label>
+            <input id="anthropicVersion" value="2023-06-01" />
+          </div>
+
+          <div class="field">
+            <label for="prompt">测试 Prompt</label>
+            <textarea id="prompt" rows="6" placeholder="Say OK and tell me which model you are."></textarea>
+          </div>
+
+          <div class="field checkbox-row">
+            <label><input id="stream" type="checkbox" /> 使用 stream 参数测试</label>
+            <label><input id="rememberConfig" type="checkbox" checked /> 保存当前配置到本地</label>
+          </div>
+
+          <div class="actions wrap">
+            <button id="fetchModelsBtn">获取模型列表</button>
+            <button id="testBtn" class="primary">测试调用</button>
+            <button id="batchTestBtn">批量测试</button>
+            <button id="copyCurlBtn">复制 cURL</button>
+          </div>
+
+          <div class="hint">
+            密钥只会在浏览器本地保存（如果你启用本地保存或档案保存），不会写入服务器磁盘。
+          </div>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="result-block">
+            <h2>结果摘要</h2>
+            <pre id="summary">等待测试...</pre>
+          </div>
+          <div class="result-block">
+            <h2>模型列表</h2>
+            <pre id="modelsOutput">尚未获取</pre>
+          </div>
+          <div class="result-block">
+            <h2>批量测试结果</h2>
+            <pre id="batchOutput">尚未开始</pre>
+          </div>
+          <div class="result-block">
+            <h2>cURL</h2>
+            <pre id="curlOutput">尚未生成</pre>
+          </div>
+          <div class="result-block">
+            <h2>原始响应</h2>
+            <pre id="rawOutput">暂无</pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

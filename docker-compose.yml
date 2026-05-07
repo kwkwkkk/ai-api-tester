@@ -1,0 +1,19 @@
+services:
+  ai-api-tester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-api-tester
+    ports:
+      - "3210:3210"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3210
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3210/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

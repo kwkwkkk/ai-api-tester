@@ -1,0 +1,14 @@
+appId: com.openclaw.aiapitester
+productName: AI API Tester
+asar: false
+files:
+  - "public/**/*"
+  - "app-core.mjs"
+  - "electron-main.js"
+  - "package.json"
+  - "node_modules/**/*"
+extraMetadata:
+  main: electron-main.js
+win:
+  target:
+    - portable

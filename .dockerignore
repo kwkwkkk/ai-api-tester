@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.git
+.gitignore
+app.log
+Dockerfile*
+docker-compose*.yml
+compose*.yml
+README.md
+ELECTRON-README.md
+build-win.bat
+start.bat
+dist
