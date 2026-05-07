@@ -9,7 +9,9 @@
   "scripts": {
     "start": "node server.mjs",
     "electron": "node electron-dev.js",
-    "dist:win": "electron-builder --win portable"
+    "dist:win": "electron-builder --win portable",
+    "dev:cf": "npx wrangler pages dev public",
+    "deploy": "npx wrangler pages deploy public --project-name ai-api-tester"
   },
   "dependencies": {
     "express": "^4.21.2"
