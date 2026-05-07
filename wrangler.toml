@@ -1,2 +1,3 @@
 name = "ai-api-tester"
 compatibility_date = "2024-09-01"
+pages_build_output_dir = "./public"
